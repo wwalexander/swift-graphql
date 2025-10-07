@@ -20,7 +20,7 @@ public struct GraphQLHTTPClient {
         self.jsonEncoder = .init()
     }
     
-    public func data<Variables: Encodable, Data: Decodable>(for request: GraphQLRequest<Variables>) async throws -> Data {
+    public func data<Variables: Encodable, Data: Decodable>(_ type: Data.Type, for request: GraphQLRequest<Variables>) async throws -> Data {
         var urlRequest = URLRequest(url: endpoint)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
