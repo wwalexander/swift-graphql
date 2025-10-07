@@ -4,6 +4,9 @@ import PackageDescription
 
 let package = Package(
     name: "swift-graphql",
+    platforms: [
+        .macOS(.v12)
+    ],
     products: [
         .library(
             name: "GraphQL",
@@ -13,6 +16,10 @@ let package = Package(
     targets: [
         .target(
             name: "GraphQL"
+        ),
+        .target(
+            name: "GraphQLHTTP",
+            dependencies: ["GraphQL"]
         ),
         .testTarget(
             name: "GraphQLTests",

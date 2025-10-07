@@ -1,14 +1,22 @@
 public struct GraphQLRequest<Variables> {
     public var query: String
+    public var operationName: String?
     public var variables: Variables?
     
-    init(query: String, variables: Variables?) {
+    public init(
+        query: String,
+        operationName: String? = nil,
+        variables: Variables?
+    ) {
         self.query = query
         self.variables = variables
     }
     
-    public init(query: String) where Variables == GraphQLRequestVariablesNone {
-        self.query = query
+    public init(
+        query: String,
+        operationName: String? = nil
+    ) where Variables == GraphQLRequestVariablesNone {
+        self.init(query: query, operationName: operationName, variables: nil)
     }
     
     public init(query: String, variables: Variables) {
