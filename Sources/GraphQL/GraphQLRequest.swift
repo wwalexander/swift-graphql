@@ -18,7 +18,7 @@ public struct GraphQLRequest<Variables> {
     
 }
 
-public enum GraphQLRequestVariablesNone {}
+public struct GraphQLRequestVariablesNone: Codable {}
 
 extension GraphQLRequest: Decodable where Variables: Decodable {}
 extension GraphQLRequest: Encodable where Variables: Encodable {}
