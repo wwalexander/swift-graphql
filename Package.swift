@@ -12,6 +12,10 @@ let package = Package(
             name: "GraphQL",
             targets: ["GraphQL"]
         ),
+        .library(
+            name: "GraphQLHTTP",
+            targets: ["GraphQLHTTP"]
+        )
     ],
     targets: [
         .target(
