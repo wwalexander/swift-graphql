@@ -1,3 +1,5 @@
+import Foundation
+
 public struct GraphQLErrors: RawRepresentable {
     public var rawValue: [GraphQLError]
     
@@ -12,7 +14,11 @@ extension GraphQLErrors: ExpressibleByArrayLiteral {
     }
 }
 
-extension GraphQLErrors: Error {}
+extension GraphQLErrors: Error {
+    var localizedDescription: String {
+        rawValue.map(\.localizedDescription).joined(separator: "\n")
+    }
+}
 
 extension GraphQLErrors: Decodable {
     public init(from decoder: Decoder) throws {
