@@ -1,3 +1,5 @@
+import Foundation
+
 public struct GraphQLError {
     var message: String
     var locations: [GraphQLErrorLocation]?
@@ -6,6 +8,6 @@ public struct GraphQLError {
 
 extension GraphQLError: Codable {}
 
-extension GraphQLError: Error {
-    public var localizedDescription: String { message }
+extension GraphQLError: LocalizedError {
+    public var errorDescription: String? { message }
 }

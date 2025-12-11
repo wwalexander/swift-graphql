@@ -14,9 +14,9 @@ extension GraphQLErrors: ExpressibleByArrayLiteral {
     }
 }
 
-extension GraphQLErrors: Error {
-    var localizedDescription: String {
-        rawValue.map(\.localizedDescription).joined(separator: "\n")
+extension GraphQLErrors: LocalizedError {
+    public var errorDescription: String? {
+        rawValue.compactMap(\.errorDescription).joined(separator: "\n")
     }
 }
 
