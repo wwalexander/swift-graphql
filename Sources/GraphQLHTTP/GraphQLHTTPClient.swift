@@ -11,13 +11,15 @@ public struct GraphQLHTTPClient {
     public init(
         endpoint: URL,
         headers: [String: String?] = [:],
-        urlSession: URLSession = .shared
+        urlSession: URLSession = .shared,
+        jsonDecoder: JSONDecoder = .init(),
+        jsonEncoder: JSONEncoder = .init()
     ) {
         self.endpoint = endpoint
         self.headers = headers
         self.urlSession = urlSession
-        self.jsonDecoder = .init()
-        self.jsonEncoder = .init()
+        self.jsonDecoder = jsonDecoder
+        self.jsonEncoder = jsonEncoder
     }
     
     public func data<Variables: Encodable, Data: Decodable>(_ type: Data.Type, for request: GraphQLRequest<Variables>) async throws -> Data {
